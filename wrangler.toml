@@ -18,7 +18,7 @@ pages_build_output_dir = ".vercel/output/static"
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
 [vars]
 # MY_VARIABLE = "production_value"
-PASSWORD = ""
+PASSWORD = "password"
 STORAGE_PROVIDER = "r2"
 MAX_IMAGE_SIZE = "20"
 ENABLE_IMAGE_COMPRESSION = "false"
