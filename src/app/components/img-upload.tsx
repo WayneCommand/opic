@@ -39,6 +39,7 @@ import {UrlIcon} from "@/app/components/icon/url-icon";
 import {FileSelectZone, FileSelectZoneRef} from "@/app/components/file-select-zone";
 import imageCompression from 'browser-image-compression';
 import {sleep} from "@/app/lib/utils";
+import { getRequestContext } from '@cloudflare/next-on-pages';
 
 type ImgUploadStatus = 'idle' | 'selected' | 'compressing' |'uploading' | 'completed'
 type ImgUploadState = {
@@ -96,8 +97,11 @@ export function ImgUpload(
 
   const { toast } = useToast();
 
+  const env = getRequestContext().env;
+  const baseURL = env.PUBLIC_BASE_URL || document.baseURI;
+
   const filePath = fileKey && "/" + fileKey;
-  const fileUrl = filePath && new URL(filePath, document.baseURI).href;
+  const fileUrl = filePath && new URL(filePath, baseURL).href;
 
   const handleFileChange = useCallback((file: File) => {
     dispatch({ type: 'selected', file })
