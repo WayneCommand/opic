@@ -7,8 +7,8 @@ import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "山",
-  description: "Private photo sharing app",
+  title: "Online Picture Storage",
+  description: "Online Picture Storage (OPIC)",
 };
 
 export default function RootLayout({

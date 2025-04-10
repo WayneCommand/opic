@@ -96,7 +96,7 @@ export function ImgUpload(
 
   const { toast } = useToast();
 
-  const filePath = fileKey && /file/ + fileKey;
+  const filePath = fileKey && "/" + fileKey;
   const fileUrl = filePath && new URL(filePath, document.baseURI).href;
 
   const handleFileChange = useCallback((file: File) => {

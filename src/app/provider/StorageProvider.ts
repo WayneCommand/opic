@@ -1,5 +1,6 @@
 import { getRequestContext } from '@cloudflare/next-on-pages'
 import R2StorageProvider from '@/app/provider/R2StorageProvider';
+import SR2StorageProvider from '@/app/provider/SR2StorageProvider';
 import TelegraphStorageProvider from '@/app/provider/TelegraphStorageProvider';
 import SignProxyProvider from "@/app/provider/SignProxyProvider";
 
@@ -21,6 +22,14 @@ export function getStorageProvider(): StorageProvider {
             throw new Error("R2_BUCKET binding is required");
         }
         return new R2StorageProvider(bucket);
+    }
+
+    if(providerCfg === 'sr2') {
+        const bucket = getRequestContext().env.R2_BUCKET;
+        if(!bucket) {
+            throw new Error("R2_BUCKET binding is required");
+        }
+        return new SR2StorageProvider(bucket);
     }
 
     if(providerCfg === 'telegraph') {
