@@ -18,8 +18,12 @@ pages_build_output_dir = ".vercel/output/static"
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
 [vars]
 # MY_VARIABLE = "production_value"
-PASSWORD = "admin"
+PASSWORD = ""
 STORAGE_PROVIDER = "r2"
+MAX_IMAGE_SIZE = "20"
+ENABLE_IMAGE_COMPRESSION = "false"
+COMPRESSED_IMAGE_MAX_SIZE = "5"
+MAX_IMAGE_WIDTH_OR_HEIGHT = "2560"
 SECRET_KEY = ""
 TELEGRAPH_SIGN_ENABLED = "false"
 
@@ -60,7 +64,7 @@ TELEGRAPH_SIGN_ENABLED = "false"
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets
 [[r2_buckets]]
 binding = "R2_BUCKET"
-bucket_name = "test1"
+bucket_name = "imgstor"
 
 # Bind another Worker service. Use this binding to call another Worker without network overhead.
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#service-bindings
