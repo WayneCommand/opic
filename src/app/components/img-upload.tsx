@@ -81,6 +81,7 @@ export interface ImgUploadProps {
   enableImageCompression: boolean;
   compressedImageMaxSize: number;
   maxImageWidthOrHeight: number;
+  baseURL: string;
 }
 
 export function ImgUpload(
@@ -88,7 +89,8 @@ export function ImgUpload(
       maxImageSize,
       enableImageCompression,
       compressedImageMaxSize,
-      maxImageWidthOrHeight
+      maxImageWidthOrHeight,
+      baseURL
     }: ImgUploadProps
 ) {
   const [{ status, file, fileKey, progress }, dispatch] = useReducer(uploadReducer, initialState);
@@ -96,9 +98,6 @@ export function ImgUpload(
   const fileZoneRef = useRef<FileSelectZoneRef | null>(null);
 
   const { toast } = useToast();
-
-  const env = getRequestContext().env;
-  const baseURL = env.PUBLIC_BASE_URL || document.baseURI;
 
   const filePath = fileKey && "/" + fileKey;
   const fileUrl = filePath && new URL(filePath, baseURL).href;
