@@ -100,7 +100,7 @@ export function ImgUpload(
   const { toast } = useToast();
 
   const filePath = fileKey && "/" + fileKey;
-  const fileUrl = filePath && new URL(filePath, baseURL).href;
+  const fileUrl = filePath && new URL(filePath, baseURL || document.baseURI).href;
 
   const handleFileChange = useCallback((file: File) => {
     dispatch({ type: 'selected', file })
